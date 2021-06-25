@@ -18,6 +18,8 @@
 	*(fp) = static_func_ptr; } while(0)
 #endif
 
+hidden void __dls2(unsigned char *base, size_t *sp);
+
 hidden void _dlstart_c(size_t *sp, size_t *dynv)
 {
 	size_t i, aux[AUX_CNT], dyn[DYN_CNT];
@@ -142,7 +144,10 @@ hidden void _dlstart_c(size_t *sp, size_t *dynv)
 	}
 #endif
 
+	/*
 	stage2_func dls2;
 	GETFUNCSYM(&dls2, __dls2, base+dyn[DT_PLTGOT]);
 	dls2((void *)base, sp);
+	*/
+	__dls2((void *)base, sp);
 }

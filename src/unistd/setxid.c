@@ -3,6 +3,8 @@
 #include "syscall.h"
 #include "libc.h"
 
+#if 0
+
 struct ctx {
 	int id, eid, sid;
 	int nr, ret;
@@ -32,3 +34,5 @@ int __setxid(int nr, int id, int eid, int sid)
 	__synccall(do_setxid, &c);
 	return __syscall_ret(c.ret);
 }
+
+#endif
